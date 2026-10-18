@@ -60,6 +60,7 @@ animationStatus.textContent = "Animasyon sıfırlandı";
   position = 0;
   lastTime = 0;
   car.style.left = "0px";
+startButton.textContent = "Başlat";
 });
 pauseButton.addEventListener("click", () => {
   if (animationId !== null) {
