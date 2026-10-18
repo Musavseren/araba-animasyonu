@@ -40,6 +40,8 @@ position += delta * speed;
 
 startButton.addEventListener("click", () => {
   if (animationId !== null) return;
+  
+  startButton.textContent = "Başlat";
 
   const maxPosition = Math.max(0, road.clientWidth - car.clientWidth);
 
