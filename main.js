@@ -21,7 +21,8 @@ function animateCar(timestamp) {
   lastTime = timestamp;
 
   const maxPosition = Math.max(0, road.clientWidth - car.clientWidth);
-  position += delta * Number(speedControl.value);
+  const speed = Number(speedControl.value) || 0.15;
+position += delta * speed;
 
   if (position >= maxPosition) {
     position = maxPosition;
