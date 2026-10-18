@@ -21,12 +21,13 @@ function animateCar(timestamp) {
  position += delta * Number(speedControl.value);
 
   if (position >= maxPosition) {
-    position = maxPosition;
-    car.style.left = `${position}px`;
-    animationId = null;
-    return;
-  }
-
+  position = maxPosition;
+  car.style.left = `${position}px`;
+  animationId = null;
+  lastTime = 0;
+  alert("Car animation completed!");
+  return;
+}
   car.style.left = `${position}px`;
   animationId = requestAnimationFrame(animateCar);
 }
