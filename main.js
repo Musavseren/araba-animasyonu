@@ -6,6 +6,7 @@ const resetButton = document.getElementById("resetButton");
 const road = document.querySelector(".road");
 const speedControl = document.getElementById("speedControl");
 const animationStatus = document.getElementById("animationStatus");
+const speedValue = document.getElementById("speedValue");
 let animationId = null;
 let position = 0;
 let lastTime = 0;
@@ -75,4 +76,7 @@ document.addEventListener("keydown", (event) => {
     if (document.activeElement.tagName === "BUTTON") return;
     startButton.click();
   }
+});
+speedControl.addEventListener("input", () => {
+  speedValue.textContent = Number(speedControl.value).toFixed(2);
 });
