@@ -27,7 +27,9 @@ function animateCar(timestamp) {
   car.style.left = `${position}px`;
   animationId = null;
   lastTime = 0;
+ startButton.textContent = "Başlat";
  animationStatus.textContent = "Animasyon tamamlandı";
+ startButton.textContent = "Tekrar Başlat";
   return;
 }
   car.style.left = `${position}px`;
@@ -76,7 +78,4 @@ document.addEventListener("keydown", (event) => {
     if (document.activeElement.tagName === "BUTTON") return;
     startButton.click();
   }
-});
-speedControl.addEventListener("input", () => {
-  speedValue.textContent = Number(speedControl.value).toFixed(2);
 });
