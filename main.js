@@ -66,7 +66,8 @@ pauseButton.addEventListener("click", () => {
   if (animationId !== null) {
     cancelAnimationFrame(animationId);
     animationId = null;
-animationStatus.textContent = "Animasyon duraklatıldı";
+    animationStatus.textContent = "Animasyon duraklatıldı";
+    startButton.textContent = "Devam Et";
   }
 });
 document.addEventListener("keydown", (event) => {
