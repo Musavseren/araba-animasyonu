@@ -1,6 +1,7 @@
 
 const car = document.getElementById("car");
 const startButton = document.getElementById("startButton");
+const pauseButton = document.getElementById("pauseButton");
 const resetButton = document.getElementById("resetButton");
 const road = document.querySelector(".road");
 
@@ -53,4 +54,10 @@ resetButton.addEventListener("click", () => {
   position = 0;
   lastTime = 0;
   car.style.left = "0px";
+});
+pauseButton.addEventListener("click", () => {
+  if (animationId !== null) {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+  }
 });
