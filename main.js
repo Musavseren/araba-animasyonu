@@ -67,6 +67,7 @@ resetButton.addEventListener("click", () => {
   speedValue.textContent = "0.15";
   startButton.textContent = "Başlat";
   animationStatus.textContent = "Animasyon sıfırlandı";
+console.log("Animasyon sıfırlandı ve hız varsayılana döndü.");
 });
 
 pauseButton.addEventListener("click", () => {
