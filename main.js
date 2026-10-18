@@ -4,7 +4,7 @@ const startButton = document.getElementById("startButton");
 const pauseButton = document.getElementById("pauseButton");
 const resetButton = document.getElementById("resetButton");
 const road = document.querySelector(".road");
-
+const speedControl = document.getElementById("speedControl");
 let animationId = null;
 let position = 0;
 let lastTime = 0;
@@ -18,7 +18,7 @@ function animateCar(timestamp) {
   lastTime = timestamp;
 
   const maxPosition = Math.max(0, road.clientWidth - car.clientWidth);
-  position += delta * 0.15;
+ position += delta * Number(speedControl.value);
 
   if (position >= maxPosition) {
     position = maxPosition;
