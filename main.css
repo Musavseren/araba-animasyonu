@@ -1,0 +1,75 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: #eaf2f8;
+  color: #1e293b;
+  display: grid;
+  place-items: center;
+}
+
+.scene {
+  width: min(900px, 92%);
+  padding: 30px;
+  text-align: center;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px #00000012;
+}
+
+h1 {
+  color: #1d4ed8;
+}
+
+.road {
+  position: relative;
+  height: 180px;
+  margin: 30px 0 20px;
+  overflow: hidden;
+  background: #475569;
+  border-radius: 10px;
+  border-bottom: 8px solid #334155;
+}
+
+.road::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 85px;
+  border-top: 4px dashed #f8fafc;
+}
+
+#car {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  bottom: 28px;
+  width: 140px;
+  height: auto;
+}
+
+button {
+  margin: 5px;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
