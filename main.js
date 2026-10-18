@@ -22,7 +22,7 @@ function animateCar(timestamp) {
 
   const maxPosition = Math.max(0, road.clientWidth - car.clientWidth);
   const speed = Number(speedControl.value) || 0.15;
-position += delta * speed;
+  position += delta * speed;
 
   if (position >= maxPosition) {
     position = maxPosition;
@@ -40,8 +40,6 @@ position += delta * speed;
 
 startButton.addEventListener("click", () => {
   if (animationId !== null) return;
-  
-  startButton.textContent = "Başlat";
 
   const maxPosition = Math.max(0, road.clientWidth - car.clientWidth);
 
@@ -90,6 +88,10 @@ document.addEventListener("keydown", (event) => {
   if (event.code === "Enter") {
     if (document.activeElement.tagName === "BUTTON") return;
     startButton.click();
+  }
+
+  if (event.code === "Escape") {
+    resetButton.click();
   }
 });
 
