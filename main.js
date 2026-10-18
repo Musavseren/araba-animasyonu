@@ -91,4 +91,8 @@ document.addEventListener("keydown", (event) => {
 
 speedControl.addEventListener("input", () => {
   speedValue.textContent = Number(speedControl.value).toFixed(2);
+
+  if (animationId !== null) {
+    animationStatus.textContent = "Animasyon çalışıyor - hız güncellendi";
+  }
 });
