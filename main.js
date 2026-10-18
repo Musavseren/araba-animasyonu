@@ -5,6 +5,7 @@ const pauseButton = document.getElementById("pauseButton");
 const resetButton = document.getElementById("resetButton");
 const road = document.querySelector(".road");
 const speedControl = document.getElementById("speedControl");
+const animationStatus = document.getElementById("animationStatus");
 let animationId = null;
 let position = 0;
 let lastTime = 0;
@@ -25,7 +26,7 @@ function animateCar(timestamp) {
   car.style.left = `${position}px`;
   animationId = null;
   lastTime = 0;
-  alert("Car animation completed!");
+ animationStatus.textContent = "Animasyon tamamlandı";
   return;
 }
   car.style.left = `${position}px`;
@@ -41,7 +42,7 @@ startButton.addEventListener("click", () => {
     position = 0;
     car.style.left = "0px";
   }
-
+animationStatus.textContent = "Animasyon çalışıyor";
   lastTime = 0;
   animationId = requestAnimationFrame(animateCar);
 });
@@ -49,6 +50,7 @@ startButton.addEventListener("click", () => {
 resetButton.addEventListener("click", () => {
   if (animationId !== null) {
     cancelAnimationFrame(animationId);
+animationStatus.textContent = "Animasyon sıfırlandı";
   }
 
   animationId = null;
@@ -60,5 +62,6 @@ pauseButton.addEventListener("click", () => {
   if (animationId !== null) {
     cancelAnimationFrame(animationId);
     animationId = null;
+animationStatus.textContent = "Animasyon duraklatıldı";
   }
 });
