@@ -65,6 +65,8 @@ resetButton.addEventListener("click", () => {
   position = 0;
   lastTime = 0;
   car.style.left = "0px";
+  speedControl.value = "0.15";
+  speedValue.textContent = "0.15";
   startButton.textContent = "Başlat";
   animationStatus.textContent = "Animasyon sıfırlandı";
 });
