@@ -29,7 +29,7 @@ function animateCar(timestamp) {
     car.style.left = `${position}px`;
     animationId = null;
     lastTime = 0;
-    animationStatus.textContent = "Animasyon tamamlandı";
+    animationStatus.textContent = `Animasyon tamamlandı. Son hız: ${Number(speedControl.value).toFixed(2)}`;
     startButton.textContent = "Tekrar Başlat";
     return;
   }
