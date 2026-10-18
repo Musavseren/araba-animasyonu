@@ -1,8 +1,12 @@
 
 const car = document.getElementById("car");
 const startButton = document.getElementById("startButton");
+const pauseButton = document.getElementById("pauseButton");
 const resetButton = document.getElementById("resetButton");
 const road = document.querySelector(".road");
+const speedControl = document.getElementById("speedControl");
+const animationStatus = document.getElementById("animationStatus");
+const speedValue = document.getElementById("speedValue");
 
 let animationId = null;
 let position = 0;
@@ -16,13 +20,17 @@ function animateCar(timestamp) {
   const delta = timestamp - lastTime;
   lastTime = timestamp;
 
-  const maxPosition = road.clientWidth - car.clientWidth;
-  position += (delta * 0.15);
+  const maxPosition = Math.max(0, road.clientWidth - car.clientWidth);
+  const speed = Number(speedControl.value) || 0.15;
+  position += delta * speed;
 
   if (position >= maxPosition) {
     position = maxPosition;
     car.style.left = `${position}px`;
     animationId = null;
+    lastTime = 0;
+    animationStatus.textContent = `Animasyon tamamlandı. Son hız: ${Number(speedControl.value).toFixed(2)}`;
+    startButton.textContent = "Tekrar Başlat";
     return;
   }
 
@@ -33,13 +41,15 @@ function animateCar(timestamp) {
 startButton.addEventListener("click", () => {
   if (animationId !== null) return;
 
-  const maxPosition = road.clientWidth - car.clientWidth;
+  const maxPosition = Math.max(0, road.clientWidth - car.clientWidth);
 
   if (position >= maxPosition) {
     position = 0;
     car.style.left = "0px";
   }
 
+  animationStatus.textContent = "Animasyon çalışıyor";
+  startButton.textContent = "Başlat";
   lastTime = 0;
   animationId = requestAnimationFrame(animateCar);
 });
@@ -53,4 +63,43 @@ resetButton.addEventListener("click", () => {
   position = 0;
   lastTime = 0;
   car.style.left = "0px";
+  speedControl.value = "0.15";
+  speedValue.textContent = "0.15";
+  startButton.textContent = "Başlat";
+  animationStatus.textContent = "Animasyon sıfırlandı";
+console.log("Animasyon sıfırlandı ve hız varsayılana döndü.");
+});
+
+pauseButton.addEventListener("click", () => {
+  if (animationId !== null) {
+    cancelAnimationFrame(animationId);
+    animationId = null;
+    lastTime = 0;
+    animationStatus.textContent = "Animasyon duraklatıldı";
+    startButton.textContent = "Devam Et";
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.code === "Space") {
+    event.preventDefault();
+    pauseButton.click();
+  }
+
+  if (event.code === "Enter") {
+    if (document.activeElement.tagName === "BUTTON") return;
+    startButton.click();
+  }
+
+  if (event.code === "Escape") {
+    resetButton.click();
+  }
+});
+
+speedControl.addEventListener("input", () => {
+  speedValue.textContent = Number(speedControl.value).toFixed(2);
+
+  if (animationId !== null) {
+    animationStatus.textContent = "Animasyon çalışıyor - hız güncellendi";
+  }
 });
