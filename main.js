@@ -17,8 +17,8 @@ function animateCar(timestamp) {
   const delta = timestamp - lastTime;
   lastTime = timestamp;
 
-  const maxPosition = road.clientWidth - car.clientWidth;
-  position += (delta * 0.15);
+  const maxPosition = Math.max(0, road.clientWidth - car.clientWidth);
+  position += delta * 0.15;
 
   if (position >= maxPosition) {
     position = maxPosition;
