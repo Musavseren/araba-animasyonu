@@ -65,3 +65,14 @@ pauseButton.addEventListener("click", () => {
 animationStatus.textContent = "Animasyon duraklatıldı";
   }
 });
+document.addEventListener("keydown", (event) => {
+  if (event.code === "Space") {
+    event.preventDefault();
+    pauseButton.click();
+  }
+
+  if (event.code === "Enter") {
+    if (document.activeElement.tagName === "BUTTON") return;
+    startButton.click();
+  }
+});
